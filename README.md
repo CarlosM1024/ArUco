@@ -4,7 +4,6 @@ A comprehensive specialized repository for the generation, detection, and 3D pos
 
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Status](https://img.shields.io/badge/Status-In--Development-yellow)
 
 ---
 
