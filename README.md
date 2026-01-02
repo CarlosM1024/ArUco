@@ -20,7 +20,6 @@ ArUco markers are binary square fiducial markers used for camera pose estimation
 ArUco/
 ├── 📂 2D/          # Marker generation and basic detection scripts.
 ├── 📂 3D/          # Pose estimation, camera calibration, and AR.
-├── 📂 docs/        # Technical documentation and mathematical background.
 └── 📂 .github/     # GitHub workflow configurations.
 ```
 
