@@ -36,9 +36,7 @@ while True:
         copy = frame #Se hace una copia
 
         #Leemos la imagen que vamos a sobreponer
-        #imagen = cv2.imread("jojo.jpg")
         imagen = cv2.imread("OnePiece.jpg")
-        #imagen = cv2.imread("OPM.jpg")
 
         #Extraemos el tamaño de la imagen
         tamaño = imagen.shape
@@ -46,7 +44,7 @@ while True:
         #Organizaremos las coordenadas del aruco en una matriz
         puntos_aruco = np.array([c1, c2, c3, c4])
 
-        #Organizaos las coordenadas del aruco en una matriz
+        #Organizamos las coordenadas del aruco en una matriz
         puntos_imagen = np.array([
             [0, 0],
             [tamaño[1]-1, 0],
