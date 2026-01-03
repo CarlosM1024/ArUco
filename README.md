@@ -68,15 +68,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you'd like to contribute to this project, feel free to submit a pull request. Please make sure your code follows the existing style and includes appropriate comments.
 
-## 👤 Author
-
-**Carlos Antonio Martinez Miranda**
-
-GitHub: [@CarlosM1024](https://github.com/CarlosM1024)
-
-
 1.  Fork the repository.
 2.  Create a new branch for your feature or bug fix.
 3.  Commit your changes.
 4.  Push to the branch.
 5.  Submit a pull request.
+
+## 👤 Author
+
+**Carlos Antonio Martinez Miranda**
+
+GitHub: [@CarlosM1024](https://github.com/CarlosM1024)
