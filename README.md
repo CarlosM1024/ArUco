@@ -50,7 +50,7 @@ git clone https://github.com/CarlosM1024/ArUco.git]
 cd ArUco
 ````
 
-2. Camera Calibration (For 3D): Before using the 3D scripts, ensure you calibrate your camera using the scripts in 3D/calibration/ to obtain your camera_matrix and dist_coeffs.
+2. Camera Calibration (For 3D): Before using the 3D scripts, ensure you calibrate your camera following the [README.md](https://github.com/CarlosM1024/ArUco/tree/main/2D/README.md) in 3D/.
 
 ## 🛠️ Usage
 
