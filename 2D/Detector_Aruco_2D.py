@@ -8,6 +8,9 @@ parametros = cv2.aruco.DetectorParameters()
 #Cargamos el diccionario de nuestro aruco
 diccionario = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_250)
 
+# Creamos el detector de ArUco
+detector = cv2.aruco.ArucoDetector(diccionario, parametros)
+
 #---------------------------Lectura de camara---------------------------
 cap = cv2.VideoCapture(0)
 cap.set(3,1280) #Definiremos un ancho y un alto definido por siempre
@@ -18,7 +21,7 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     #Detectamos los marcadores en la imagen.
-    esquinas, ids, candidatos_malos = cv2.aruco.detectMarkers(gray, diccionario, parameters=parametros)
+    esquinas, ids, candidatos_malos = detector.detectMarkers(gray)
     #En las esquinas esta guardadas las esquinas por fuera del marcador aruco.
     #ids se genera al crear el marcador.
     #Candidatos malos es por si hace una preseleccion antes de seleccionar nuestro aruco pero no se utiliza.
@@ -36,31 +39,34 @@ while True:
         copy = frame #Se hace una copia
 
         #Leemos la imagen que vamos a sobreponer
-        imagen = cv2.imread("OnePiece.jpg")
+        imagen = cv2.imread("2D\OnePiece.jpg")
 
-        #Extraemos el tamaño de la imagen
-        tamaño = imagen.shape
+        if imagen is not None:  # Verificamos que la imagen exista
+            # Extraemos el tamaño de la imagen
+            tamaño = imagen.shape
 
-        #Organizaremos las coordenadas del aruco en una matriz
-        puntos_aruco = np.array([c1, c2, c3, c4])
+            # Organizaremos las coordenadas del aruco en una matriz
+            puntos_aruco = np.array([c1, c2, c3, c4])
 
-        #Organizamos las coordenadas del aruco en una matriz
-        puntos_imagen = np.array([
-            [0, 0],
-            [tamaño[1]-1, 0],
-            [tamaño[1]-1, tamaño[0]-1],
-            [0, tamaño[0]-1]
-        ], dtype=float)
+            # Organizamos las coordenadas del aruco en una matriz
+            puntos_imagen = np.array([
+                [0, 0],
+                [tamaño[1]-1, 0],
+                [tamaño[1]-1, tamaño[0]-1],
+                [0, tamaño[0]-1]
+            ], dtype=float)
 
-        #Realizamos una superposicion de la imagen (Homografia), poner la imagen encima del aruco
-        h, estado = cv2.findHomography(puntos_imagen, puntos_aruco)
+            # Realizamos una superposicion de la imagen (Homografia), poner la imagen encima del aruco
+            h, estado = cv2.findHomography(puntos_imagen, puntos_aruco)
 
-        #Realizamos la transformacion de perspectiva, para que se mueva la imagen con el aruco
-        perspectiva = cv2.warpPerspective(imagen, h, (copy.shape[1], copy.shape[0]))
-        cv2.fillConvexPoly(copy,puntos_aruco.astype(int), 0, 16)
-        copy = copy + perspectiva
-        cv2.imshow("Realidad virtual", copy)
-
+            # Realizamos la transformacion de perspectiva, para que se mueva la imagen con el aruco
+            perspectiva = cv2.warpPerspective(imagen, h, (copy.shape[1], copy.shape[0]))
+            cv2.fillConvexPoly(copy, puntos_aruco.astype(int), 0, 16)
+            copy = copy + perspectiva
+            cv2.imshow("Realidad virtual", copy)
+        else:
+            print("Error: No se pudo cargar la imagen 'OnePiece.jpg'")
+            cv2.imshow("Realidad virtual", frame)
     else:
         cv2.imshow("Realidad virtual", frame)
 
